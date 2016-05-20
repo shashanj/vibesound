@@ -1,0 +1,32 @@
+{{widget|safe}}
+
+{% if follow == None %}
+
+<input type="button" name="" href='{{download}}'>Download Song
+
+{% else %}
+{% load staticfiles %}
+<button type="button" name="" id='button'>Download Song</button>
+<script src="{% static "jquery.min.js" %}"></script>
+<script type="text/javascript">
+						$('#button').click(function(){
+								$.ajax({
+                                     type:"POST",
+                                     url:"/follow/{{access}}",
+                                     data: {
+                                            'id': '{{user}}',
+                                            'csrfmiddlewaretoken': '{{ csrf_token }}',
+                                            // 'link' : {{download}},
+                                            },
+                                     success: function(data){
+                                     	console.log('successfully followed given user')
+                                        
+                                     },
+                                     error: function(data){
+                                        console.log(data)
+                                     }
+                                })
+                               })
+    </script>
+	
+{% endif %}

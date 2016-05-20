@@ -1,0 +1,9 @@
+<form method="POST" action="/upload/" enctype="multipart/form-data">
+{% csrf_token %}
+	<input type="hidden" name="access_token" value="{{access_token}}">
+	<input type="file" accept='audio/mp3' value='5000' name="file" required>
+	<input type="" name="track" required>
+	<input type="" name="user">
+	<input name="bool" type="checkbox" value="Yes"><label >yes</label>
+	<input type="submit" >
+</form>
